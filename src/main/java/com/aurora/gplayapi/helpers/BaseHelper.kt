@@ -179,7 +179,11 @@ abstract class BaseHelper(protected var authData: AuthData) {
             val item = listResponse.getItem(0)
             if (item != null && item.subItemCount > 0) {
                 val subItem = item.getSubItem(0)
-                return getStreamCluster(subItem)
+                println("primedebug: subitem title: ${subItem.title}")
+                if (subItem.title.contains("Education")) {
+                    println("primedebug: subitem contains")
+                    return getStreamCluster(subItem)
+                }
             }
         }
         return StreamCluster()
@@ -191,7 +195,10 @@ abstract class BaseHelper(protected var authData: AuthData) {
             val item = listResponse.getItem(0)
             if (item != null && item.subItemCount > 0) {
                 for (subItem in item.subItemList) {
-                    streamClusters.add(getStreamCluster(subItem))
+                    println("primedebug: cluster title: ${subItem.title}")
+                    if (subItem.title.contains("Education")) {
+                        streamClusters.add(getStreamCluster(subItem))
+                    }
                 }
             }
         }
