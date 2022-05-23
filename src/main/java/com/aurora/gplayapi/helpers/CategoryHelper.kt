@@ -47,7 +47,10 @@ class CategoryHelper(authData: AuthData) : BaseHelper(authData) {
                 val subItem = item.getSubItem(0)
                 if (subItem.subItemCount > 0) {
                     for (subSubItem in subItem.subItemList) {
-                        categoryList.add(getCategoryFromItem(type, subSubItem))
+                        println("primedebug: subsubitem title: ${subSubItem.title}")
+                        if (subSubItem.title.contains("Education")) {
+                            categoryList.add(getCategoryFromItem(type, subSubItem))
+                        }
                     }
                 }
             }
